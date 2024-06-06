@@ -158,15 +158,31 @@ header button.rounded-circle:hover svg {
 .main .siderWrapper .sidebar {
   width: 20%;
   height: 100vh;
+  max-height: calc(100% - 70px);
+  overflow-y: auto;
+  overflow-x: hidden;
   position: fixed;
   top: 70px;
   left: 0px;
   background-color: #fff;
+  padding-bottom: 40px;
 
+}
+.main .siderWrapper .sidebar::-webkit-scrollbar{
+  width: 7px;
+  background-color: rgba(72, 9, 220, 0.838);
+  display: none;
+  border-radius: 10px;
+
+}
+
+.main .siderWrapper:hover .sidebar::-webkit-scrollbar{
+  display: block;
 }
 
 .main .siderWrapper .sidebar ul {
   margin-bottom: 0px;
+  padding: 10px 15px;
 }
 
 .main .siderWrapper .sidebar ul li {
@@ -177,10 +193,16 @@ header button.rounded-circle:hover svg {
   color: #000;
   text-align: left;
   justify-content: left;
-  border-radius: 0px;
+  border-radius: 10px;
   padding: 12px 15px;
   align-items: center;
   font-weight: 500;
+  font-family: "Poppins", sans-serif !important;
+
+}
+
+.main .siderWrapper .sidebar ul li button:hover {
+  background-color: #f1f1f1;
 }
 
 .main .siderWrapper .sidebar ul li button .icon {
@@ -192,13 +214,13 @@ header button.rounded-circle:hover svg {
   margin-right: 10px;
 }
 
-.main .siderWrapper .sidebar ul li button .icon svg{
+.main .siderWrapper .sidebar ul li button .icon svg {
   columns: #000;
-  opacity: 0.8;
+  opacity: 0.7;
   font-size: 22px;
 }
 
-.main .siderWrapper .sidebar ul li button .arrow{
+.main .siderWrapper .sidebar ul li button .arrow {
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -208,8 +230,24 @@ header button.rounded-circle:hover svg {
   margin-right: 10px;
 }
 
-.main .siderWrapper .sidebar ul li button .arrow svg{
+.main .siderWrapper .sidebar ul li button .arrow svg {
   columns: #000;
   opacity: 0.6;
   font-size: 20px;
+}
+
+.main .siderWrapper .sidebar ul .submenu{
+  padding: 0px 45px ;
+}
+
+.main .siderWrapper .sidebar ul .submenu li{
+  width: 100%;
+  list-style: none;
+}
+
+.main .siderWrapper .sidebar ul .submenu li a{
+  color: #5e5d72;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
 }
