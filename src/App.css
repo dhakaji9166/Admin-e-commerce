@@ -168,7 +168,8 @@ header button.rounded-circle:hover svg {
   padding-bottom: 40px;
 
 }
-.main .siderWrapper .sidebar::-webkit-scrollbar{
+
+.main .siderWrapper .sidebar::-webkit-scrollbar {
   width: 7px;
   background-color: rgba(72, 9, 220, 0.838);
   display: none;
@@ -176,7 +177,7 @@ header button.rounded-circle:hover svg {
 
 }
 
-.main .siderWrapper:hover .sidebar::-webkit-scrollbar{
+.main .siderWrapper:hover .sidebar::-webkit-scrollbar {
   display: block;
 }
 
@@ -198,11 +199,21 @@ header button.rounded-circle:hover svg {
   align-items: center;
   font-weight: 500;
   font-family: "Poppins", sans-serif !important;
+  font-size: 15px !important;
+
 
 }
 
 .main .siderWrapper .sidebar ul li button:hover {
   background-color: #f1f1f1;
+}
+
+.main .siderWrapper .sidebar ul li button.active {
+  background-color: #f1f1f1;
+}
+
+.main .siderWrapper .sidebar ul li button.active .arrow{
+  transform: rotate(90deg);
 }
 
 .main .siderWrapper .sidebar ul li button .icon {
@@ -220,6 +231,10 @@ header button.rounded-circle:hover svg {
   font-size: 22px;
 }
 
+.main .siderWrapper .sidebar ul li button.active .icon svg{
+  color: #0858f7;
+}
+
 .main .siderWrapper .sidebar ul li button .arrow {
   margin-left: auto;
   display: flex;
@@ -228,6 +243,7 @@ header button.rounded-circle:hover svg {
   width: 25px;
   height: 25px;
   margin-right: 10px;
+  transition: all 0.3s ease;
 }
 
 .main .siderWrapper .sidebar ul li button .arrow svg {
@@ -236,18 +252,140 @@ header button.rounded-circle:hover svg {
   font-size: 20px;
 }
 
-.main .siderWrapper .sidebar ul .submenu{
-  padding: 0px 45px ;
+.main .siderWrapper .sidebar ul .submenu {
+  padding: 0px 45px;
+  position: relative;
 }
 
-.main .siderWrapper .sidebar ul .submenu li{
+.main .siderWrapper .sidebar ul .submenu::before {
+  content: '';
+  width: 1px;
+  height: 95%;
+  position: absolute;
+  top: 0px;
+  left: 24px;
+  background: rgb(0, 0, 0, 0.3);
+}
+
+.main .siderWrapper .sidebar ul .submenu li {
   width: 100%;
   list-style: none;
 }
 
-.main .siderWrapper .sidebar ul .submenu li a{
+.main .siderWrapper .sidebar ul .submenu li a {
   color: #5e5d72;
   text-decoration: none;
   display: block;
-  padding: 5px 0;
+  padding: 7px 0;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
+.main .siderWrapper .sidebar ul .submenu li a:hover {
+  color: #0858f7;
+}
+
+.main .siderWrapper .sidebar ul .submenuWrapper.colapsed {
+  height: 0px;
+}
+
+.main .siderWrapper .sidebar ul .submenuWrapper.colapsed .submenu {
+  opacity: 0;
+}
+
+.main .siderWrapper .sidebar ul .submenuWrapper.colapse {
+  height: auto;
+}
+
+.main .siderWrapper .sidebar ul .submenuWrapper.colapse .submenu {
+  opacity: 1;
+}
+
+.logoutWrapper {
+  padding: 0px 25px;
+}
+
+.logoutWrapper .logoutBox {
+  width: 100%;
+  height: 130px;
+  padding: 25px;
+  background-color: #bcd2fd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoutWrapper .logoutBox::before {
+  position: absolute;
+  content: "";
+  width: 70px;
+  height: 70px;
+  background-color: #0858f7;
+  border-radius: 100%;
+  opacity: 0.5;
+  top: -20px;
+  right: -20px;
+}
+
+.logoutWrapper .logoutBox::after {
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-color: #0858f7;
+  border-radius: 100%;
+  opacity: 0.5;
+  left: 19px;
+  top: 20px;
+}
+
+.logoutWrapper .logoutBox button {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.logoutWrapper .logoutBox button svg {
+  margin-right: 7px;
+  font-size: 18px;
+}
+
+
+
+
+/* Dashboard section start */
+.main .content{
+  width: 80%;
+  flex: 0 0 80%;
+}
+
+
+.right-content{
+  padding: 90px 30px;
+}
+
+.dashboardBoxWrapper{
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.dashboardBoxWrapper .dashboardBox{
+  width: 48%;
+  height: 170px;
+  background-color: #ccc;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.dashboardBoxWrapperRow .box{
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
 }

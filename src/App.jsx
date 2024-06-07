@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import Navbar from './Components/Navbar';
-import Dashboard from './Components/Dashboard';
+import Dashboard from './Components/Dashboard/Dashboard';
 import Sidebar from './Components/Sidebar';
 
 function App() {
