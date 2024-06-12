@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import Button from '@mui/material/Button';
 import { MdOutlineMenuOpen } from "react-icons/md";
-import { MdOutlineMenu } from "react-icons/md";
+import { MdMenu } from "react-icons/md";
 import SearchBox from './SearchBox';
 import { CiLight } from "react-icons/ci";
-import { MdDarkMode } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import { IoMailOutline } from "react-icons/io5";
 import { FaBell } from "react-icons/fa";
-
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import { MyContext } from '../App';
+
 
 function Navbar() {
 
@@ -30,7 +30,7 @@ function Navbar() {
         setAnchorEl(null);
     };
 
-
+    const context = useContext(MyContext)
 
     return (
         <>
@@ -47,22 +47,26 @@ function Navbar() {
                         </div>
 
                         <div className="col-sm-3 d-flex align-items-center part2">
-                            <Button className='rounded-circle'>
-                                <MdOutlineMenuOpen />
+                            <Button className='rounded-circle' onClick={() => context.setIsTroggleSidebar(!context.isTroggleSidebar)} >
+
+                                {
+                                    context.isTroggleSidebar === false ? <MdOutlineMenuOpen /> : <MdMenu />
+                                }
                             </Button>
                             <SearchBox />
                         </div>
                         <div className="col-sm-7 d-flex align-items-center justify-content-end part2">
-                            <Button className='rounded-circle'>     <CiLight />   </Button>
+                            <Button className='rounded-circle'> <CiLight /> </Button>
+                            <Button className='rounded-circle'> <IoCartOutline /> </Button>
+                            <Button className='rounded-circle'> <IoMailOutline /> </Button>
+                            <Button className='rounded-circle'> <FaBell /> </Button>
 
-                            <Button className='rounded-circle'>     <IoCartOutline />  </Button>
-                            <Button className='rounded-circle'>     <IoMailOutline />  </Button>
 
-                            <Button className='rounded-circle'>     <FaBell />   </Button>
+
+
 
                             <div className="myAccWrapper">
-                                <Button className="myAcc d-flex align-items-center"
-                                    onClick={handleOpenMyAccDrop}>
+                                <Button className="myAcc d-flex align-items-center" onClick={handleOpenMyAccDrop}>
                                     <div className="userImg">
                                         <span className='rounded-circle'>
                                             <img src="https://mironcoder-hotash.netlify.app/images/avatar/01.webp" alt="" />
@@ -79,11 +83,9 @@ function Navbar() {
                                     open={open}
                                     onClose={handleCloseMyAccDrop}
                                     onClick={handleCloseMyAccDrop}
-
                                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                 >
-
                                     <MenuItem onClick={handleCloseMyAccDrop}>
                                         <ListItemIcon>
                                             <PersonAdd />
@@ -92,27 +94,21 @@ function Navbar() {
                                     </MenuItem>
                                     <MenuItem onClick={handleCloseMyAccDrop}>
                                         <ListItemIcon>
-                                            <Settings  />
+                                            <Settings />
                                         </ListItemIcon>
                                         Reset Password
                                     </MenuItem>
                                     <MenuItem onClick={handleCloseMyAccDrop}>
                                         <ListItemIcon>
-                                            <Logout  />
+                                            <Logout />
                                         </ListItemIcon>
                                         Logout
                                     </MenuItem>
                                 </Menu>
-
                             </div>
-
-
                         </div>
-
-
                     </div>
                 </div>
-
             </header >
         </>
     );
