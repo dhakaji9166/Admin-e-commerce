@@ -5,28 +5,46 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Sidebar from './Components/Sidebar';
+import Login from './Pages/Login/Login';
+import SignUp from './Pages/SignUp/SignUp';
 
 const MyContext = createContext();
 
 function App() {
   const [isTroggleSidebar, setIsTroggleSidebar] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const [isHideSidebarAndHeader, setIsHideSidebarAndHeader] = useState(false)
+
 
   const values = {
-    isTroggleSidebar, setIsTroggleSidebar
+    isTroggleSidebar,
+    setIsTroggleSidebar,
+    isLogin,
+    setIsLogin,
+    isHideSidebarAndHeader,
+    setIsHideSidebarAndHeader
   };
 
   return (
     <BrowserRouter>
       <MyContext.Provider value={values}>
-        <Navbar />
+        {
+          isHideSidebarAndHeader !== true &&
+          <Navbar />
+        }
         <div className="main d-flex">
-          <div className={`siderWrapper ${isTroggleSidebar ? 'toggled' : ''}`}>
-            <Sidebar />
-          </div>
-          <div className={`content ${isTroggleSidebar ? 'toggled' : ''}`}>
+          {
+            isHideSidebarAndHeader !== true &&
+            <div className={`siderWrapper ${isTroggleSidebar ? 'toggled' : ''}`}>
+              <Sidebar />
+            </div>
+          }
+          <div className={`content ${isHideSidebarAndHeader === true && "full"} ${isTroggleSidebar ? 'toggled' : ''}`}>
             <Routes>
               <Route path='/' element={<Dashboard />} />
               <Route path='/dashbord' element={<Dashboard />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/signUp' element={<SignUp />} />
             </Routes>
           </div>
         </div>
